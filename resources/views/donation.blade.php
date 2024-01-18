@@ -102,7 +102,7 @@
     data-client-key="{{ config('services.midtrans.clientKey') }}">
     </script>
     <script>
-        $(donation_form).submit(function(event){
+        $("#donation_form").submit(function(event){
         event.preventDefault()
 
         $.post("/donation",{
