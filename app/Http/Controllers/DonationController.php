@@ -14,10 +14,7 @@ class DonationController extends Controller
         return view('donation');
     }
 
-    public function store(Request $request)
-    {
-
-        public function __construct()
+    public function __construct()
         {
             \Midtrans\Config::$serverKey = config('services.midtrans.serverKey');
             \Midtrans\Config::$isProduction = config('services.midtrans.isProduction');
@@ -25,6 +22,8 @@ class DonationController extends Controller
             \Midtrans\Config::$is3ds = config('services.midtrans.is3ds');
         }
 
+    public function store(Request $request)
+    {
         \DB::transaction(function() use ($request)
         {
             $donation = Donation::create([

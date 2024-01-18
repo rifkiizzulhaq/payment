@@ -102,8 +102,8 @@
     data-client-key="{{ config('services.midtrans.clientKey') }}">
     </script>
     <script>
-      $(donation_form).submit(function(event){
-        event.prventDefault();
+        $(donation_form).submit(function(event){
+        event.preventDefault()
 
         $.post("/donation",{
             _method: "POST",
@@ -113,26 +113,26 @@
             donation_type: $('select#donation_type').val(),
             amount: $('input#amount').val(),
             note: $('textarea#note').val(),
-          },
-          function(data, status){
+        },
+        function(data, status){
             snap.pay(data.snap_token, {
                 // Optional
-                onSuccess: function(result){
-                  location.reload();
-                },
-                // Optional
-                onPending: function(result){
-                  location.reload();
-                },
+                    onSuccess: function(result){
+                    location.reload();
+                    },
+                    // Optional
+                    onPending: function(result){
+                    location.reload();
+                    },
 
-                // Optional
-                onError: function(result){
-                  location.reload();
+                    // Optional
+                    onError: function(result){
+                    location.reload();
                 }
             });
             return false;
-          });
-      });
+        });
+    });
     </script>
 </body>
 
