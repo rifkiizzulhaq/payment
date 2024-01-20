@@ -14,9 +14,11 @@
 // use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'DonationController@index')->name('donation.index');
 
 Auth::routes();
 

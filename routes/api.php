@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/donation', 'DonationController@store')->name('donation.store');
+Route::post('/midtrans/notification', 'DonationController@notification')->name('donation.store');

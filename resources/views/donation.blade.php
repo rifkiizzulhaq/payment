@@ -61,12 +61,12 @@
                     <div class="form-group">
                         <label for="">Jenis Donasi</label>
                         <select name="donation_type" class="form-control" id="donation_type">
-                          <option value="medis_kesehatan">Medis & Kesehatan</option>
-                          <option value="kemanusiaan">Kemanusiaan</option>
-                          <option value="bencana_alam">Bencana Alam</option>
-                          <option value="rumah_ibadah">Rumah Ibadah</option>
-                          <option value="beasiswa_pendidikan">Beasiswa & Pendidikan</option>
-                          <option value="sarana_infrastruktur">Sarana & Infrastruktur</option>
+                            <option value="medis_kesehatan">Medis & Kesehatan</option>
+                            <option value="kemanusiaan">Kemanusiaan</option>
+                            <option value="bencana_alam">Bencana Alam</option>
+                            <option value="rumah_ibadah">Rumah Ibadah</option>
+                            <option value="beasiswa_pendidikan">Beasiswa & Pendidikan</option>
+                            <option value="sarana_infrastruktur">Sarana & Infrastruktur</option>
                         </select>
                     </div>
                 </div>
@@ -90,8 +90,6 @@
         </form>
     </div>
 
-
-
     <script src="https://code.jquery.com/jquery-3.4.1.min.js">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js">
@@ -103,9 +101,9 @@
     </script>
     <script>
         $("#donation_form").submit(function(event){
-        event.preventDefault()
+        event.preventDefault();
 
-        $.post("/donation",{
+        $.post("/api/donation",{
             _method: "POST",
             _token: '{{ csrf_token() }}',
             donor_name: $('input#donor_name').val(),
@@ -115,15 +113,16 @@
             note: $('textarea#note').val(),
         },
         function(data, status){
+            console.log(data);
             snap.pay(data.snap_token, {
                 // Optional
                     onSuccess: function(result){
                     location.reload();
-                    },
+                },
                     // Optional
                     onPending: function(result){
                     location.reload();
-                    },
+                },
 
                     // Optional
                     onError: function(result){
